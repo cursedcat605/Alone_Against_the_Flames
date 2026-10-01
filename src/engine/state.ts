@@ -184,7 +184,9 @@ function cleanLabel(label: string | null): string | null {
 function defaultLabel(link: SceneLink): string {
   if (link.outcome === 'success') return '（检定成功）'
   if (link.outcome === 'failure') return '（检定失败）'
+  if (link.outcome === 'fumble') return '（大失败）'
   if (link.outcome === 'push') return '（孤注一掷的后果）'
+  if (link.outcome === 'always') return '（检定之后继续）'
   if (link.condition) return describeCondition(link.condition)
   return '继续'
 }
@@ -194,11 +196,14 @@ function defaultLabel(link: SceneLink): string {
 /**
  * 分析当前节点能做什么。
  *
- * 这是全项目最容易过度工程的一处。M1 的策略是**只在配对无歧义时自动结算**：
+ * 策略是**只在配对无歧义时自动结算**：
  *   - 纯条件分支（原书用属性直接分叉）→ 条件成立则自动继续
- *   - 恰好 1 个检定 + 恰好 1 条 success + ≤1 条 failure → 检定结果直接决定落点
+ *   - 恰好 1 个检定、每组结果（成功/失败/大失败/孤注一掷/兜底）至多 1 条链接
+ *     → 掷骰结果直接决定落点，不看玩家的选择
  *   - 其他情况 → 所有链接都列成按钮，让玩家自己点
- * 宁可让玩家多点一次，也不要猜错配对把剧情引到错误的分支。
+ *
+ * 宁可让玩家多点一次，也不要猜错配对把剧情引到错误的分支。但反过来也成立：
+ * 凡是能定的就必须定下来，不能把「你自己判通没通过」这种活推给玩家。
  */
 export function analyze(state: GameState): Interaction {
   const scene = SCENES.byId.get(state.nodeId)
@@ -256,16 +261,37 @@ export function analyze(state: GameState): Interaction {
   }
 
   // (2) 单一检定的自动结算
+  //
+  // 掷完骰子就该把玩家带走，不能让他自己判「通没通过」——那是引擎的活，让玩家
+  // 来判等于把规则扔了。凡是**配对无歧义**的条目一律自动结算：唯一的检定 +
+  // 每组结果至多一条链接。解析器认全了原文的五种写法（成功/失败、通过/没有
+  // 通过、胜出/落败、大失败、孤注一掷），外加「兜底出口」——原文只写后果、
+  // 不写两条路的条目（条目 52「如果你失败了……现在转到 64」），成功失败同路。
+  //
+  // 仍然猜不出来的只有两种，都如实交给玩家自己点（宁可吵，不可静）：
+  //   - 两个以上检定，无法判断哪条链接配哪个检定
+  //   - 原书按别的量分叉（条目 262 的近身战斗按双方 HP 分叉）
   const successes = outcomeLinks.filter((l) => l.outcome === 'success')
   const failures = outcomeLinks.filter((l) => l.outcome === 'failure')
+  const fumbles = outcomeLinks.filter((l) => l.outcome === 'fumble')
   const pushes = outcomeLinks.filter((l) => l.outcome === 'push')
-  const auto = scene.checks.length === 1 && successes.length === 1 && failures.length <= 1
+  const always = outcomeLinks.filter((l) => l.outcome === 'always')
+  const groups = [successes, failures, fumbles, pushes, always]
+  const routable = scene.checks.length === 1 && groups.every((g) => g.length <= 1)
+
+  const successTo = routable ? (successes[0]?.to ?? always[0]?.to ?? null) : null
+  const failureTo = routable ? (failures[0]?.to ?? always[0]?.to ?? null) : null
+  // 大失败退回普通失败：原文只在少数条目（110/208）单写了大失败的落点，
+  // 其余条目掷出 96+ 就该走「没有通过」那条路。
+  const fumbleTo = routable ? (fumbles[0]?.to ?? failureTo) : null
+  const pushTo = routable ? (pushes[0]?.to ?? null) : null
+  const alwaysTo = routable ? (always[0]?.to ?? null) : null
+  // 检定摆在一条出口都没有的条目上（结局/断点）：没得选，掷骰只为结算效果。
+  const nothingToPick = scene.checks.length > 0 && scene.links.length === 0
 
   for (let i = 0; i < scene.checks.length; i++) {
     const check = scene.checks[i]
     const info = resolveTarget(char, check.skill)
-    const main = i === 0
-    const resolvable = auto && main
 
     if (info.kind === 'unknown') {
       blockers.push(
@@ -281,16 +307,29 @@ export function analyze(state: GameState): Interaction {
       targetLabel: info.label,
       target: info.value,
       difficulty: check.difficulty,
-      successTo: resolvable ? (successes[0]?.to ?? null) : null,
-      failureTo: resolvable ? (failures[0]?.to ?? null) : null,
-      pushTo: main ? (pushes[0]?.to ?? null) : null,
-      ambiguous: !resolvable,
+      successTo,
+      failureTo,
+      fumbleTo,
+      pushTo,
+      alwaysTo,
+      // 一条结果都定不下来才算「歧义」。只定下成功不算：失败之后原书可能给了
+      // 玩家几个去处（条目 266），那种情况掷完骰子照样自动走成功那条路，
+      // 只有失败时才把原文的选项摆出来。
+      ambiguous: !nothingToPick && successTo === null && failureTo === null,
     })
   }
 
-  if (auto) {
-    consumed.add(indexOf(successes[0]))
-    if (failures[0]) consumed.add(indexOf(failures[0]))
+  if (!nothingToPick && routable && successTo === null && failureTo === null) {
+    blockers.push(
+      '本条目摆了检定，但原文没写任何一条结果去往哪里，也没有兜底出口。' +
+        '掷完骰子只能在下面的分支里手动选 —— 属于内容缺口，请核对原文。',
+    )
+  }
+
+  if (routable) {
+    for (const g of groups) {
+      if (g[0]) consumed.add(indexOf(g[0]))
+    }
   }
 
   // (3) 剩下的链接全部作为按钮
@@ -331,7 +370,10 @@ export interface CheckOutcome {
   state: GameState
   resolution: CheckResolution
   targetLabel: string
-  /** null = 该检定在原文里没有配对的分支，玩家需要手动选 */
+  /**
+   * 掷骰之后的落点，null = 原文没给唯一分支，需要玩家手动选。
+   * 正常剧本里 null 只应当出现在解析报告「掷骰后仍需玩家自己选」列出的条目上。
+   */
   destination: number | null
   pushed: boolean
   summary: string
@@ -407,6 +449,10 @@ export function performCheck(
     destination = offer.pushTo ?? offer.failureTo
   } else if (resolution.passed) {
     destination = offer.successTo
+  } else if (resolution.level === 'fumble') {
+    // 大失败是独立落点（原文单独写了「如果掷出大失败」），不是普通失败。
+    // 条目 110/208 都是这个结构：少了这一支，玩家会走进普通失败的文案。
+    destination = offer.fumbleTo ?? offer.failureTo
   } else {
     destination = offer.failureTo
   }
@@ -415,7 +461,8 @@ export function performCheck(
     next = appendLog(
       next,
       'system',
-      '这次检定在原书里没有配对的分支。请从下面的选项里选一个继续 —— 属于内容缺口，请人工确认。',
+      '这次检定原书没有指定唯一的下一站（原书按别的条件分叉），' +
+        '已按掷骰结果结算效果，请从下面的选项里选一个继续。',
       state.nodeId,
     )
     // 没有分支不代表没有后果：原书常写「如果失败，失去 1D4 点理智值」而两条路是同一条。

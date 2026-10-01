@@ -19,7 +19,8 @@ interface KnownGapsRaw {
   deadEnds: number[]
   noOutlet: Record<string, string>
   endingsWithChecks: { id: number; skills: string[]; reason: string }[]
-  singleBranchChecks: Record<string, string>
+  /** 掷完骰子仍然定不下落点、必须让玩家自己点的条目（当前只有 262/266）。 */
+  manualRoute: Record<string, string>
   convergingBranches: Record<string, string>
 }
 
@@ -56,3 +57,12 @@ export const KNOWN_INTERRUPTED: number[] = [
 
 /** 非结局、却没有任何出口的条目。当前为空。 */
 export const KNOWN_NO_OUTLET: number[] = Object.keys(KNOWN_GAPS_RAW.noOutlet).map(Number)
+
+/**
+ * 掷完骰子仍然定不下落点、必须让玩家自己点的条目 —— 是**原书本身**没有唯一分支
+ * 的地方，不是缺陷名单（理由写在 overrides.json 的 manualRoute 里）。
+ *
+ * 校验脚本（`npm run check`）与 `routing.test.ts` 都读这一份：这组长了，就说明有
+ * 检定悄悄退化成「请玩家自己判通没通过」。
+ */
+export const KNOWN_MANUAL_ROUTE: number[] = Object.keys(KNOWN_GAPS_RAW.manualRoute).map(Number)

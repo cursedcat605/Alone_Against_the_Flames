@@ -397,6 +397,17 @@ p {
   font-weight: 600;
 }
 
+/*
+ * 落点。掷完骰子要一眼看出「去了哪条文案」——列表里的选项本来也带条目号，
+ * 这里保持一致（原书就是编号 CYOA，玩家手里那本书也是这么翻的）。
+ */
+.roll-dest {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
 .roll-detail {
   font-family: var(--mono);
   font-size: 12px;

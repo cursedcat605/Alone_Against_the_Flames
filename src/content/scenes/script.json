@@ -973,7 +973,8 @@
       "links": [
         {
           "label": "现在",
-          "to": 64
+          "to": 64,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -1818,7 +1819,8 @@
       "links": [
         {
           "label": "然后",
-          "to": 79
+          "to": 79,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -2071,7 +2073,7 @@
         {
           "label": "如果你投出结果大于等于 96，这是一次大失败",
           "to": 149,
-          "outcome": "failure"
+          "outcome": "fumble"
         }
       ],
       "checks": [
@@ -2538,11 +2540,13 @@
       "links": [
         {
           "label": "如果你通过了“敏捷”检定",
-          "to": 261
+          "to": 261,
+          "outcome": "success"
         },
         {
           "label": "如果你没有通过“敏捷”检定",
-          "to": 59
+          "to": 59,
+          "outcome": "failure"
         }
       ],
       "checks": [
@@ -2660,7 +2664,8 @@
       "links": [
         {
           "label": null,
-          "to": 63
+          "to": 63,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -2826,11 +2831,13 @@
       "links": [
         {
           "label": "如果你在对抗检定中胜出",
-          "to": 172
+          "to": 172,
+          "outcome": "success"
         },
         {
           "label": "如果你在对抗检定中落败",
-          "to": 87
+          "to": 87,
+          "outcome": "failure"
         }
       ],
       "checks": [
@@ -2926,11 +2933,13 @@
       "links": [
         {
           "label": "如果你在对抗检定中胜出",
-          "to": 161
+          "to": 161,
+          "outcome": "success"
         },
         {
           "label": "如果你在对抗检定中落败",
-          "to": 167
+          "to": 167,
+          "outcome": "failure"
         }
       ],
       "checks": [
@@ -3115,7 +3124,7 @@
         {
           "label": "如果你的孤注一掷失败",
           "to": 190,
-          "outcome": "failure"
+          "outcome": "push"
         }
       ],
       "checks": [
@@ -3269,7 +3278,8 @@
         },
         {
           "label": "如果你在三轮结束以后仍然没有倒下",
-          "to": 201
+          "to": 201,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -3603,7 +3613,8 @@
       "links": [
         {
           "label": "然后",
-          "to": 199
+          "to": 199,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -3774,7 +3785,8 @@
       "links": [
         {
           "label": "现在",
-          "to": 79
+          "to": 79,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -3906,11 +3918,12 @@
         {
           "label": "如果你掷出大失败（结果为 96 或更高）",
           "to": 222,
-          "outcome": "failure"
+          "outcome": "fumble"
         },
         {
           "label": "否则",
-          "to": 228
+          "to": 228,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -4615,7 +4628,8 @@
       "links": [
         {
           "label": null,
-          "to": 256
+          "to": 256,
+          "outcome": "always"
         }
       ],
       "checks": [
@@ -4908,6 +4922,14 @@
         {
           "label": "你也可以扑灭炉火再睡觉",
           "to": 58
+        },
+        {
+          "label": "或者彻夜不眠",
+          "to": 52
+        },
+        {
+          "label": "或者放松下来，好奇地吸一口烟气",
+          "to": 26
         }
       ],
       "checks": [

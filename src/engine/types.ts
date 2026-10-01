@@ -82,7 +82,19 @@ export interface LinkCondition {
   value: number
 }
 
-export type LinkOutcome = 'success' | 'failure' | 'push'
+/**
+ * 链接与检定结果的对应关系。
+ *
+ * 每加一种，就意味着「掷完骰子能自动带走玩家」多覆盖一种原文写法；
+ * 少一种，那一处就退化成「请自己选一个」——玩家得替引擎做规则判断。
+ * 解析器认的措辞见 tools/txt_to_scenes.py 的 detect_links。
+ */
+export type LinkOutcome =
+  | 'success' // 如果成功 / 通过 / 胜出
+  | 'failure' // 如果失败 / 没有通过 / 落败 / 否则
+  | 'fumble' // 大失败：独立落点，不是普通失败
+  | 'push' // 孤注一掷之后的结果
+  | 'always' // 兜底：成功失败都走这条（原文只写后果、不写两条路）
 
 export interface SceneLink {
   label: string | null
@@ -236,11 +248,23 @@ export interface CheckOffer {
   /** 目标值（技能值或属性值） */
   target: number
   difficulty: Difficulty
-  /** 可自动结算时的落点 */
+  /**
+   * 各种结果各自的落点，null = 原书没写这条路。
+   *
+   * successTo/failureTo 优先，然后才是 alwaysTo 兜底 —— 原文只写后果、不写
+   * 两条路的条目（如 52「如果你失败了……现在转到 64」）只有 alwaysTo。
+   */
   successTo: number | null
   failureTo: number | null
+  fumbleTo: number | null
   pushTo: number | null
-  /** true = 本节点里同时存在多个检定，引擎不猜配对，交给玩家点 */
+  alwaysTo: number | null
+  /**
+   * true = 原书真的没给唯一分支，掷完骰子得请玩家自己选。
+   *
+   * 这是**内容缺口**，不是正常状态：解析报告里会逐条列出，正常剧本应当全为
+   * false。真为 true 时 UI 会把分支摆成按钮让玩家点（宁可吵，不可静）。
+   */
   ambiguous: boolean
 }
 
@@ -250,7 +274,7 @@ export interface ChoiceOffer {
   label: string
   to: number | null
   conditionText?: string
-  /** 这条链接是「检定成功/失败/孤注一掷」的分支 */
+  /** 这条链接是「检定成功/失败/大失败/孤注一掷/兜底」的分支 */
   outcome?: LinkOutcome
 }
 

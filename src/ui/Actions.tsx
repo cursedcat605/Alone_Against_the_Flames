@@ -1,5 +1,10 @@
 import { thresholds } from '../engine/names'
-import { DIFFICULTY_LABELS, type CheckOffer, type Interaction } from '../engine/types'
+import {
+  DIFFICULTY_LABELS,
+  type CheckOffer,
+  type Interaction,
+  type LinkOutcome,
+} from '../engine/types'
 
 interface Props {
   interaction: Interaction
@@ -107,8 +112,10 @@ export default function Actions({
   )
 }
 
-function outcomeText(outcome: 'success' | 'failure' | 'push'): string {
+function outcomeText(outcome: LinkOutcome): string {
   if (outcome === 'success') return '检定成功'
   if (outcome === 'failure') return '检定失败'
+  if (outcome === 'fumble') return '大失败'
+  if (outcome === 'always') return '检定之后继续'
   return '孤注一掷'
 }

@@ -148,7 +148,9 @@ export function useGame(): GameApi {
       setState(outcome.state)
       setLastCheck(outcome)
       if (outcome.destination === null) {
-        setToast('这个检定在原文里没有配对的分支，请手动选择下面的选项。')
+        // 正常剧本里不该走到这里（解析报告会逐条列出这种条目）。
+        // 真遇到时把话说清楚：骰子已经掷了、效果已经结算，只是原书没写唯一落点。
+        setToast('掷骰结果已结算，但原书在这里没有指定唯一的下一站，请从下面的选项里继续。')
       }
     },
     [],

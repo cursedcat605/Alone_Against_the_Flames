@@ -111,12 +111,20 @@ def read_lines() -> list[str]:
 
 
 def split_sentences(paragraph: str) -> list[str]:
-    """按中文句末标点切句，保留标点。"""
+    """按中文句末标点切句，保留标点。
+
+    分号也算句末，这一条是必须的：正文里
+      「你也可以扑灭炉火再睡觉：转到 58；或者彻夜不眠：转到 52；或者放松下来，
+        好奇地吸一口烟气：转到 26。」
+    是**一句话带三个出口**。只切 。！？ 的话，detect_links 的 RE_GOTO.search 只认
+    第一个「转到 58」，另外两条路被静默吞掉 —— 条目 266 就这样丢了两个选项。
+    （另一处多出口的句子在条目 173 的译注里，本来就要整段丢弃。）
+    """
     out: list[str] = []
     buf = ""
     for ch in paragraph:
         buf += ch
-        if ch in "。！？":
+        if ch in "。！？；":
             out.append(buf)
             buf = ""
     if buf:
@@ -202,15 +210,50 @@ def parse_nodes(lines: list[str]) -> tuple[list[dict], list[str]]:
     return nodes, notes
 
 
+def text_has_check(text: str) -> bool:
+    """正文里有没有检定要求。
+
+    detect_links（判断该不该标成功/失败分支）与 detect_kind（判断条目类型）
+    共用同一个判据，避免两处各写一份、日后漂移。
+    """
+    return bool(RE_CHECK_SKILL.search(text) or RE_CHECK_DIFF.search(text))
+
+
+# 「检定之后无论如何都往下走」的兜底出口长这样：
+#   条目 52「如果你失败了，……获得一颗惩罚骰。现在转到 64。」→ 标签「现在」
+#   条目 141「……失去 1D2 点理智值。转到 63。」→ 没有标签
+#   条目 173「如果你在三轮结束以后仍然没有倒下」→ 分支式措辞
+# 反面例子必须排除，否则会吞掉玩家真正的选项：
+#   条目 266「你也可以扑灭炉火再睡觉」、条目 89「如果你不想冒险继续」
+RE_OUTLET_PREFIX = re.compile(
+    r"^(?:现在|然后|之后|接着|于是|那么|此时|这时|而后|随后|就|如果|否则|若)"
+)
+RE_PLAYER_OPTION = re.compile(r"你(?:也)?(?:可以|想|愿意|希望|要)|或者|还是")
+
+
+def outlet_label(label: str | None) -> bool:
+    """这个标签读起来是「往下走」，还是「你也想……吗」。
+
+    没标签（「转到 64。」光秃秃一句）算前者：正文没给玩家任何选择余地。
+    """
+    lab = (label or "").strip()
+    if not lab:
+        return True
+    if RE_PLAYER_OPTION.search(lab):
+        return False
+    return bool(RE_OUTLET_PREFIX.match(lab))
+
+
 def detect_links(text: str) -> tuple[list[dict], str]:
     """返回 (links, display_text)。
 
-    links:  {label, to, condition?}
+    links:  {label, to, condition?, outcome?}
     display_text: 原文本去掉跳转句子后的版本，供 UI 渲染（跳转改为按钮）
     """
     links: list[dict] = []
     kept_paragraphs: list[str] = []
     has_success_branch = "如果你成功了" in text or "检定成功" in text
+    has_check = text_has_check(text)
 
     for paragraph in text.split("\n"):
         kept: list[str] = []
@@ -253,31 +296,79 @@ def detect_links(text: str) -> tuple[list[dict], str]:
                            "小于等于": "lte", "不超过": "lte", "至少": "gte"}[cond.group(2)],
                     "value": int(cond.group(3)),
                 }
-            # 成功/失败分支标记（供引擎自动结算检定）
-            # 「否则转到 25」是最常见的失败写法（条目 34/57/87/96/133/178）。只认
-            # 「失败」会让这些条目失去失败分支，而引擎只在「恰好 1 成功 + ≤1 失败」时
-            # 自动结算 —— 于是把「否则」降级成普通按钮，玩家要么手点要么被卡住。
+            # 成功/失败分支标记（供引擎按掷骰结果自动结算检定）
+            #
+            # 这里的目标只有一条：**掷完骰子就该自动带走玩家，不能让他自己判通没通过。**
+            # 漏掉任何一种措辞，那个条目就退化成「请自己选一个」——玩家得替引擎做规则
+            # 判断，等于把规则扔了。全书有五种写法，都要认：
+            #   成功 / 失败      最标准
+            #   通过 / 没有通过  条目 134（只认「成功/失败」时，134 的敏捷检定无法自动跳转）
+            #   胜出 / 落败      条目 150/155 的对抗检定
+            #   大失败           条目 110/208：它是**独立落点**，不是普通失败
+            #   孤注一掷         条目 165：重掷失败的落点，与首次失败不同
+            #
+            # 「否则转到 25」是最常见的普通失败写法（条目 34/57/87/96/133/178）。
             # 判据用结构信号：本条正文里必须存在「如果你成功了」，否则「否则」可能只是
             # 「你也可以……」的意思（条目 266），那种情况让玩家自己选。
             # （译注不可能走到这里：上面 is_parenthetical 已经拦掉了。）
-            if "成功" in label and "失败" not in label:
+            #
+            # 闸门：分支标签必定以「如果…」「否则…」开头。少了这道闸，条目 7 的
+            # 「要尝试化装通过」「要尝试靠口才通过把守村口的人群」会被读成「通过了检定」，
+            # 凭空长出两个成功分支。已标记的 102 条链接全都满足这个前缀，加闸零回归。
+            #
+            # 顺序就是优先级，不能重排：
+            #   「孤注一掷」「大失败」必须排在「失败」前（自身含「失败」二字）；
+            #   「没有通过」必须排在「通过」前（自身含「通过」二字）。
+            if not label.startswith(("如果", "否则")):
+                pass
+            elif "孤注一掷" in label:
+                link["outcome"] = "push"
+            elif "大失败" in label:
+                link["outcome"] = "fumble"
+            elif "没有通过" in label or "未能通过" in label or "没有成功" in label:
+                link["outcome"] = "failure"
+            elif "胜出" in label:
+                link["outcome"] = "success"
+            elif "落败" in label:
+                link["outcome"] = "failure"
+            elif "通过" in label:
+                link["outcome"] = "success"
+            elif "成功" in label and "失败" not in label:
                 link["outcome"] = "success"
             elif "失败" in label or ("否则" in label and has_success_branch):
                 link["outcome"] = "failure"
-            elif "孤注一掷" in label:
-                link["outcome"] = "push"
 
             links.append(link)
 
         if kept:
             kept_paragraphs.append("".join(kept))
 
+    # 检定之后的「兜底出口」
+    #
+    # 原文有时只写后果、不写两条路各自去哪：
+    #   「如果你失败了，今天你的技能检定获得一颗惩罚骰。现在转到 64。」（条目 52）
+    # 成功和失败都走同一条路，于是没有任何 success/failure 标记。这种条目以前会
+    # 退化成「请自己选一个」——玩家得替引擎判通没通过，等于把规则扔了。
+    #
+    # 三条判据同时成立才标，宁可漏标（退化成手点）也不误标（吞掉玩家选项）：
+    #   1. 本条有检定 —— 没有检定就没有「检定结果」这回事
+    #   2. 恰好一个非条件、非结果标记的出口 ——
+    #      多出口就是玩家真在做选择（条目 266 的三选一）
+    #   3. 已有的结果标记不超过 1 个 —— 成功和失败都写明的条目（如 89 的
+    #      「如果你成功了 → 95 / 如果你失败了 → 101」）两个出口都齐了，
+    #      剩下那条「如果你不想冒险继续 → 120」是额外给玩家的选项，不能吞
+    if has_check:
+        plain = [l for l in links if not l.get("condition") and not l.get("outcome")]
+        tagged = [l for l in links if l.get("outcome")]
+        if len(plain) == 1 and len(tagged) <= 1 and outlet_label(plain[0].get("label")):
+            plain[0]["outcome"] = "always"
+
     display = "\n".join(p for p in kept_paragraphs if p.strip())
     return links, display
 
 
 def detect_kind(node: dict, links: list[dict], text: str) -> str:
-    has_check = bool(RE_CHECK_SKILL.search(text) or RE_CHECK_DIFF.search(text))
+    has_check = text_has_check(text)
     # 【剧终】未必是本条目的结局，它可能是**条件性死亡**。例：条目 65
     #   「如果你的生命值因此归零，你就会失去意识，被烈焰烧死！【剧终】。
     #     否则，进行一次“力量”检定。如果你成功了，转到 93。如果你失败了，转到 77。」
@@ -479,6 +570,26 @@ def main() -> None:
     if orphan:
         warns.append(f"孤立条目（从 1 到不了，{len(orphan)} 个）: {orphan}")
 
+    # 掷完骰子能不能自动带走玩家？这一步**故意**不是警告：剧本里确实有几处
+    # 原文就没给唯一分支（条目的近身战斗按 HP 阈值分叉、条目 266 失败后三选一），
+    # 那属于忠实还原，不是缺陷。列出来是为了看得见 —— 以后加内容时漏了分支，
+    # 它会从这个短名单里长出来。
+    manual: list[str] = []
+    for n in out:
+        if not n["checks"] or n["kind"] in ("ending", "dead_end"):
+            continue
+        su = next((l["to"] for l in n["links"] if l.get("outcome") == "success"), None)
+        fa = next((l["to"] for l in n["links"] if l.get("outcome") == "failure"), None)
+        al = next((l["to"] for l in n["links"] if l.get("outcome") == "always"), None)
+        success_to = su if su is not None else al
+        failure_to = fa if fa is not None else al
+        if success_to is None or failure_to is None:
+            manual.append(
+                f"条目 {n['id']}（{n['kind']}）"
+                f"成功→{success_to if success_to is not None else '无分支'} "
+                f"失败→{failure_to if failure_to is not None else '无分支'}"
+            )
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     payload = {
         "meta": {
@@ -510,6 +621,9 @@ def main() -> None:
         "",
         "== 效果复核（说明句/怪物数据里被丢掉的数字） ==",
         *(effect_report if effect_report else ["（无）"]),
+        "",
+        "== 掷骰后仍需玩家自己选的检定（其余都能按结果自动跳转） ==",
+        *(manual if manual else ["（无）"]),
         "",
         "== 警告 ==",
         *(warns if warns else ["（无）"]),

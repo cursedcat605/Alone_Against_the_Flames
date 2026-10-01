@@ -118,6 +118,9 @@ export default function App() {
                 {' · '}
                 {LEVEL_LABELS[api.lastCheck.resolution.level]}
               </span>
+              {api.lastCheck.destination !== null && (
+                <span className="roll-dest">→ 条目 {api.lastCheck.destination}</span>
+              )}
             </div>
           )}
 

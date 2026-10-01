@@ -283,6 +283,58 @@ def check_typography(nodes: list[dict], gaps: dict) -> None:
                 err(f"条目 {n['id']} 第 {i + 1} 段以破折号结尾（句子被劈开了）")
 
 
+def check_routing(nodes: list[dict], gaps: dict) -> None:
+    """掷完骰子能不能自动把玩家带走？
+
+    这是**规则自动化**的核心不变量。原文里检定的分支有五种写法（成功/失败、
+    通过/没有通过、胜出/落败、大失败、孤注一掷），外加「兜底出口」（成功失败走
+    同一条路）。解析器漏认任何一种，那条链接就拿不到 outcome 标记，引擎配对不上，
+    只能弹出「请自己选通没通过」——玩家得替引擎做规则判断。
+
+    这里按引擎（src/engine/state.ts 的 analyze）的同一套规则重算一遍：
+      唯一的检定 + 每组结果至多一条链接 → 必须能定出成功与失败两条路
+    定不出来的条目必须登记在 knownGaps.manualRoute 里，多一个就报 ERROR。
+
+    历史：这一项从缺的时候，14 个条目退化成了手点，其中包括只写「通过/没有通过」
+    的条目 134 —— 玩家掷出大失败还得自己宣布「我没通过」。
+    """
+    manual = {int(k) for k in gaps.get("manualRoute", {})}
+    found: list[int] = []
+
+    for n in nodes:
+        # 结局/死路没有下一站，掷骰只为结算效果，不算问题
+        if n["kind"] in ("ending", "dead_end") or not n["checks"]:
+            continue
+        routable = len(n["checks"]) == 1
+        groups: dict[str, int] = {}
+        for link in n["links"]:
+            outcome = link.get("outcome")
+            if not outcome or link.get("condition"):
+                continue
+            groups[outcome] = groups.get(outcome, 0) + 1
+            if groups[outcome] > 1:
+                routable = False
+        if not routable:
+            found.append(n["id"])
+            continue
+        if groups.get("always"):
+            continue  # 兜底出口：成功失败同路，两边都有落点
+        if not groups.get("success") or not groups.get("failure"):
+            found.append(n["id"])
+
+    unregistered = [i for i in found if i not in manual]
+    stale = sorted(manual - set(found))
+    if unregistered:
+        err(
+            "掷完骰子无法自动结算的检定（玩家得自己判通没通过）："
+            f"{sorted(unregistered)}。多半是解析器漏认了某种分支措辞"
+            "（见 txt_to_scenes.py 的 detect_links），请先核对正文；"
+            "若确实是原书没有唯一分支，才登记到 overrides.json 的 knownGaps.manualRoute。"
+        )
+    if stale:
+        warn(f"knownGaps.manualRoute 里的条目 {stale} 现在能自动结算了，请从名单里删掉")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="校验 script.json 的完整性")
     ap.add_argument("--json", action="store_true", help="以 JSON 输出结果")
@@ -301,6 +353,7 @@ def main() -> int:
     check_checks(nodes, resolvable, aliases, families, gaps)
     check_effects(nodes, resolvable, aliases, families, gaps)
     check_conditions(nodes, resolvable, gaps)
+    check_routing(nodes, gaps)
     seen, unreachable = check_graph(nodes, gaps)
     check_typography(nodes, gaps)
 
