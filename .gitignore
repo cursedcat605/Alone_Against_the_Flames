@@ -1,0 +1,22 @@
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+
+# Python 工具产物（可重新生成，不入库）
+__pycache__/
+*.pyc
+# tools/_* 是排查问题时的一次性脚本与输出，随时可删，不进仓库。
+# 真正需要保留的工具是 txt_to_scenes.py / generate_rules.py / validate_script.py / overrides.json。
+tools/_*
+
+# Word 打开文档时留下的锁定文件（不是你写的）
+~$*
+
+# 编辑器
+.vscode/*
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db

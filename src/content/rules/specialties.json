@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "source": "向火独行 卡.xlsx / 技能专攻"
+  },
+  "groups": [
+    {
+      "group": "艺术与手艺",
+      "key": "arts",
+      "items": [
+        {
+          "name": "表演",
+          "base": 5
+        },
+        {
+          "name": "美术",
+          "base": 5
+        },
+        {
+          "name": "摄影",
+          "base": 5
+        },
+        {
+          "name": "伪造文书",
+          "base": 5
+        },
+        {
+          "name": "写作",
+          "base": 5
+        },
+        {
+          "name": "书法",
+          "base": 5
+        },
+        {
+          "name": "音乐",
+          "base": 5
+        },
+        {
+          "name": "厨艺",
+          "base": 5
+        },
+        {
+          "name": "理发",
+          "base": 5
+        },
+        {
+          "name": "木匠",
+          "base": 5
+        },
+        {
+          "name": "舞蹈",
+          "base": 5
+        },
+        {
+          "name": "莫里斯舞蹈",
+          "base": 5
+        },
+        {
+          "name": "歌剧演唱",
+          "base": 5
+        },
+        {
+          "name": "粉刷/油漆工",
+          "base": 5
+        },
+        {
+          "name": "制陶",
+          "base": 5
+        },
+        {
+          "name": "雕塑",
+          "base": 5
+        }
+      ]
+    },
+    {
+      "group": "科学",
+      "key": "science",
+      "items": [
+        {
+          "name": "地质学",
+          "base": 1
+        },
+        {
+          "name": "化学",
+          "base": 1
+        },
+        {
+          "name": "生物学",
+          "base": 1
+        },
+        {
+          "name": "数学",
+          "base": 10
+        },
+        {
+          "name": "天文学",
+          "base": 1
+        },
+        {
+          "name": "物理学",
+          "base": 1
+        },
+        {
+          "name": "药学",
+          "base": 1
+        },
+        {
+          "name": "植物学",
+          "base": 1
+        },
+        {
+          "name": "动物学",
+          "base": 1
+        },
+        {
+          "name": "密码学",
+          "base": 1
+        },
+        {
+          "name": "工程学",
+          "base": 1
+        },
+        {
+          "name": "气象学",
+          "base": 1
+        },
+        {
+          "name": "司法科学",
+          "base": 1
+        }
+      ]
+    },
+    {
+      "group": "格斗",
+      "key": "fighting",
+      "items": [
+        {
+          "name": "鞭子",
+          "base": 5
+        },
+        {
+          "name": "电锯",
+          "base": 10
+        },
+        {
+          "name": "斗殴",
+          "base": 25
+        },
+        {
+          "name": "斧",
+          "base": 15
+        },
+        {
+          "name": "剑",
+          "base": 20
+        },
+        {
+          "name": "绞索",
+          "base": 15
+        },
+        {
+          "name": "链枷",
+          "base": 10
+        },
+        {
+          "name": "矛",
+          "base": 20
+        }
+      ]
+    },
+    {
+      "group": "射击",
+      "key": "firearms",
+      "items": [
+        {
+          "name": "步枪/霰弹枪",
+          "base": 25
+        },
+        {
+          "name": "冲锋枪",
+          "base": 15
+        },
+        {
+          "name": "弓",
+          "base": 15
+        },
+        {
+          "name": "火焰喷射器",
+          "base": 10
+        },
+        {
+          "name": "机枪",
+          "base": 10
+        },
+        {
+          "name": "手枪",
+          "base": 20
+        },
+        {
+          "name": "重武器",
+          "base": 10
+        }
+      ]
+    },
+    {
+      "group": "非常规技能",
+      "key": "uncommon",
+      "items": [
+        {
+          "name": "爆破",
+          "base": 1
+        },
+        {
+          "name": "催眠",
+          "base": 1
+        },
+        {
+          "name": "读唇",
+          "base": 1
+        },
+        {
+          "name": "炮术",
+          "base": 1
+        },
+        {
+          "name": "潜水",
+          "base": 1
+        },
+        {
+          "name": "驯兽",
+          "base": 5
+        }
+      ]
+    }
+  ]
+}

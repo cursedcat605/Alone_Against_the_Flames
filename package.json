@@ -1,0 +1,29 @@
+{
+  "name": "aaf",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "向火独行 — 《克苏鲁的呼唤》第七版单人对战冒险的网页版",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "script": "python tools/txt_to_scenes.py",
+    "rules": "python tools/generate_rules.py",
+    "check": "python tools/validate_script.py"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^3.0.5"
+  }
+}

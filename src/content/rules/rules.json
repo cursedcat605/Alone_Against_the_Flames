@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "source": "向火独行 卡.xlsx / 建卡 + 附表 + 人物卡‘快速参考规则’",
+    "note": "纯公式，引擎按此实现；改动这里即改动规则。"
+  },
+
+  "attributes": [
+    { "key": "STR", "label": "力量", "formula": "3D6*5" },
+    { "key": "CON", "label": "体质", "formula": "3D6*5" },
+    { "key": "DEX", "label": "敏捷", "formula": "3D6*5" },
+    { "key": "APP", "label": "外貌", "formula": "3D6*5" },
+    { "key": "POW", "label": "意志", "formula": "3D6*5" },
+    { "key": "SIZ", "label": "体型", "formula": "(2D6+6)*5" },
+    { "key": "INT", "label": "智力", "formula": "(2D6+6)*5" },
+    { "key": "EDU", "label": "教育", "formula": "(2D6+6)*5" }
+  ],
+
+  "derived": {
+    "Luck": { "label": "幸运", "formula": "3D6*5" },
+    "HP": { "label": "生命值", "formula": "floor((CON+SIZ)/10)" },
+    "MP": { "label": "魔法值", "formula": "floor(POW/5)" },
+    "SAN": { "label": "理智值", "formula": "POW", "max": 99 },
+    "MOV": { "label": "移动力", "formula": "见 movRule" }
+  },
+
+  "movRule": {
+    "base": "力量与敏捷都高于体型 → 9；其中一项高于体型 → 8；都不高于 → 7",
+    "buildAdjust": "体格 ≥ 1 → +1；体格 ≤ -1 → -1",
+    "agePenalty": [
+      { "minAge": 80, "penalty": 5 },
+      { "minAge": 70, "penalty": 4 },
+      { "minAge": 60, "penalty": 3 },
+      { "minAge": 50, "penalty": 2 },
+      { "minAge": 40, "penalty": 1 }
+    ]
+  },
+
+  "ageModifiers": [
+    {
+      "minAge": 15, "maxAge": 19,
+      "eduChecks": 0,
+      "strSizPenalty": 5, "strConDexPenalty": 0, "appPenalty": 0,
+      "luckRolls": 2,
+      "note": "力量和体型合计 -5，教育 -5。决定幸运时可掷 2 次取较好值。"
+    },
+    {
+      "minAge": 20, "maxAge": 39,
+      "eduChecks": 1,
+      "strSizPenalty": 0, "strConDexPenalty": 0, "appPenalty": 0,
+      "luckRolls": 1,
+      "note": "进行 1 次教育增强检定。"
+    },
+    {
+      "minAge": 40, "maxAge": 49,
+      "eduChecks": 2,
+      "strSizPenalty": 0, "strConDexPenalty": 5, "appPenalty": 5,
+      "luckRolls": 1,
+      "note": "进行 2 次教育增强检定。力量+体质+敏捷合计 -5，外貌 -5。"
+    },
+    {
+      "minAge": 50, "maxAge": 59,
+      "eduChecks": 3,
+      "strSizPenalty": 0, "strConDexPenalty": 10, "appPenalty": 10,
+      "luckRolls": 1,
+      "note": "进行 3 次教育增强检定。力量+体质+敏捷合计 -10，外貌 -10。"
+    },
+    {
+      "minAge": 60, "maxAge": 69,
+      "eduChecks": 4,
+      "strSizPenalty": 0, "strConDexPenalty": 20, "appPenalty": 15,
+      "luckRolls": 1,
+      "note": "进行 4 次教育增强检定。力量+体质+敏捷合计 -20，外貌 -15。"
+    },
+    {
+      "minAge": 70, "maxAge": 79,
+      "eduChecks": 4,
+      "strSizPenalty": 0, "strConDexPenalty": 40, "appPenalty": 20,
+      "luckRolls": 1,
+      "note": "进行 4 次教育增强检定。力量+体质+敏捷合计 -40，外貌 -20。"
+    },
+    {
+      "minAge": 80, "maxAge": 999,
+      "eduChecks": 4,
+      "strSizPenalty": 0, "strConDexPenalty": 80, "appPenalty": 25,
+      "luckRolls": 1,
+      "note": "进行 4 次教育增强检定。力量+体质+敏捷合计 -80，外貌 -25。"
+    }
+  ],
+
+  "buildTable": [
+    { "minSum": 2, "maxSum": 64, "db": "-2", "build": -2 },
+    { "minSum": 65, "maxSum": 84, "db": "-1", "build": -1 },
+    { "minSum": 85, "maxSum": 124, "db": "0", "build": 0 },
+    { "minSum": 125, "maxSum": 164, "db": "+1D4", "build": 1 },
+    { "minSum": 165, "maxSum": 204, "db": "+1D6", "build": 2 },
+    { "minSum": 205, "maxSum": 284, "db": "+2D6", "build": 3 },
+    { "minSum": 285, "maxSum": 364, "db": "+3D6", "build": 4 },
+    { "minSum": 365, "maxSum": 444, "db": "+4D6", "build": 5 },
+    { "minSum": 445, "maxSum": 524, "db": "+5D6", "build": 6 },
+    { "minSum": 525, "maxSum": 604, "db": "+6D6", "build": 7 },
+    { "minSum": 605, "maxSum": 684, "db": "+7D6", "build": 8 },
+    { "minSum": 685, "maxSum": 764, "db": "+8D6", "build": 9 },
+    { "minSum": 765, "maxSum": 844, "db": "+9D6", "build": 10 },
+    { "minSum": 845, "maxSum": 924, "db": "+10D6", "build": 11 },
+    { "minSum": 925, "maxSum": 1004, "db": "+11D6", "build": 12 },
+    { "minSum": 1005, "maxSum": 1084, "db": "+12D6", "build": 13 }
+  ],
+
+  "skillPointsRule": {
+    "occupation": "见 occupations.json 的 skillPoints（由‘职业属性 ×N’公式算出，表里已给结果）",
+    "interest": "智力 × 2",
+    "creditRatingMustReach": "分配职业点后，信用评级必须落在职业的 CR 区间内"
+  },
+
+  "quickRules": {
+    "successLevels": {
+      "fumble": "技能 < 50 时为 96-100；技能 ≥ 50 时为 100；另有‘大失败 0’",
+      "failure": "> 技能值",
+      "regular": "≤ 技能值",
+      "hard": "≤ 技能值 / 2（向下取整）",
+      "extreme": "≤ 技能值 / 5（向下取整）",
+      "critical": "01（大成功）"
+    },
+    "push": "孤注一掷：可重掷上一次检定，但需合理解释重掷原因。战斗检定与理智检定不能孤注一掷。",
+    "firstAid": "「急救」成功回复 1 点生命值",
+    "medicine": "「医学」成功回复 1D3 点生命值",
+    "majorWound": "一次受到 ≥ 最大生命值一半的伤害",
+    "unconscious": "生命值 = 0 但没有重伤 → 昏迷（每小时可尝试体质检定苏醒）",
+    "dying": "生命值 = 0 且重伤 → 濒死。需要「急救」摆脱濒死，之后用「医学」持续治疗",
+    "naturalHealing": "没有重伤时每天自然回复 1 点生命值；重伤时每周做 1 次恢复检定",
+    "sanityLoss": "单次失去 5 点以上理智 → 进行智力检定，成功则临时性疯狂；失去 20% 以上理智 → 不定性疯狂"
+  },
+
+  "eraList": ["1920s 美国", "维多利亚时代 英国", "2010s 中国", "2010s 日本"]
+}

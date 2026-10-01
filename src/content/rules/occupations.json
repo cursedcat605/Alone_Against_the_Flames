@@ -1,0 +1,2225 @@
+{
+  "meta": {
+    "source": "向火独行 卡.xlsx / 职业列表",
+    "count": 115,
+    "note": "skillPoints 为职业（本职）技能点总数；兴趣技能点 = 智力×2，见 rules.json"
+  },
+  "occupations": [
+    {
+      "id": 0,
+      "name": "自定义职业",
+      "creditRating": {
+        "min": 0,
+        "max": 99
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "不多于8个本职技能。使用自定义职业前",
+        "请先咨询你的守秘人。请在左侧的职业属性中选择你想要的本职技能点计算方式",
+        "默认为教育×4"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "会计师",
+      "creditRating": {
+        "min": 30,
+        "max": 70
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "法律",
+        "图书馆",
+        "聆听",
+        "说服",
+        "侦查",
+        "任意其他两项个人或时代特长"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "杂技演员",
+      "creditRating": {
+        "min": 9,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "闪避",
+        "跳跃",
+        "投掷",
+        "侦查",
+        "游泳",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "演员-戏剧演员",
+      "creditRating": {
+        "min": 9,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（表演）",
+        "乔装",
+        "格斗",
+        "历史",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "演员-电影演员",
+      "creditRating": {
+        "min": 20,
+        "max": 90
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（表演）",
+        "乔装",
+        "汽车驾驶",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意两项其他个人或时代特长（如骑乘或格斗）"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "中介调查员",
+      "creditRating": {
+        "min": 20,
+        "max": 45
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗（斗殴）",
+        "射击",
+        "法律",
+        "图书馆",
+        "心理学",
+        "潜行",
+        "追踪"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "精神病医生（古典）",
+      "creditRating": {
+        "min": 10,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "法律",
+        "聆听",
+        "医学",
+        "外语",
+        "精神分析",
+        "心理学",
+        "科学（生物学，化学）"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "动物训练师",
+      "creditRating": {
+        "min": 10,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋外貌或意志×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "跳跃",
+        "聆听",
+        "博物学",
+        "心理学",
+        "科学（动物学）",
+        "潜行",
+        "追踪",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "文物学家（原作向）",
+      "creditRating": {
+        "min": 30,
+        "max": 70
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "估价",
+        "技艺（任一）",
+        "历史",
+        "图书馆",
+        "外语",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "古董商",
+      "creditRating": {
+        "min": 30,
+        "max": 50
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "估价",
+        "汽车驾驶",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "历史",
+        "图书馆",
+        "导航"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "考古学家（原作向）",
+      "creditRating": {
+        "min": 10,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "估价",
+        "考古",
+        "历史",
+        "外语",
+        "图书馆",
+        "侦查",
+        "机械维修",
+        "导航或科学（任一：如化学、物理、地理等）"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "建筑师",
+      "creditRating": {
+        "min": 30,
+        "max": 70
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "技艺（技术制图）",
+        "法律",
+        "母语",
+        "计算机或图书馆",
+        "说服",
+        "心理学",
+        "科学（数学）"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "艺术家",
+      "creditRating": {
+        "min": 9,
+        "max": 50
+      },
+      "attrFormula": "教育×2＋敏捷或意志×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（任一）",
+        "历史或博物学",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "外语",
+        "心理学",
+        "侦查",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "精神病院护工",
+      "creditRating": {
+        "min": 8,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "闪避",
+        "格斗（斗殴）",
+        "急救",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "聆听",
+        "心理学",
+        "潜行"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "运动员",
+      "creditRating": {
+        "min": 9,
+        "max": 70
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "跳跃",
+        "格斗（斗殴）",
+        "骑乘",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "游泳",
+        "投掷",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "作家（原作向）",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（文学）",
+        "历史",
+        "图书馆",
+        "博物学或神秘学",
+        "外语",
+        "母语",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "酒保",
+      "creditRating": {
+        "min": 8,
+        "max": 25
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "会计",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗（斗殴）",
+        "聆听",
+        "心理学",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "猎人",
+      "creditRating": {
+        "min": 20,
+        "max": 50
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "射击",
+        "聆听或侦查",
+        "博物学",
+        "导航",
+        "外语或生存（任一）",
+        "科学（生物学或植物学）",
+        "潜行",
+        "追踪"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "书商",
+      "creditRating": {
+        "min": 20,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "估价",
+        "汽车驾驶",
+        "历史",
+        "图书馆",
+        "母语",
+        "外语",
+        "一项社交技能（魅惑、话术、恐吓、说服）"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "赏金猎人",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "汽车驾驶",
+        "电子学或电气维修",
+        "格斗或射击",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "法律",
+        "心理学",
+        "追踪",
+        "潜行"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "拳击手、摔跤手",
+      "creditRating": {
+        "min": 9,
+        "max": 60
+      },
+      "attrFormula": "教育×2＋力量×2",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "闪避",
+        "格斗（斗殴）",
+        "恐吓",
+        "跳跃",
+        "心理学",
+        "侦查",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "管家、男仆、女仆",
+      "creditRating": {
+        "min": 9,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计或估价",
+        "技艺（任一：如烹饪、裁缝、理发）",
+        "急救",
+        "聆听",
+        "外语",
+        "心理学",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "神职人员",
+      "creditRating": {
+        "min": 9,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "历史",
+        "图书馆",
+        "聆听",
+        "外语",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意一项其他技能"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "程序员、电子工程师",
+      "creditRating": {
+        "min": 10,
+        "max": 70
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "计算机",
+        "电气维修",
+        "电子学",
+        "图书馆",
+        "科学（数学）",
+        "侦查",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "黑客/骇客",
+      "creditRating": {
+        "min": 10,
+        "max": 70
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "计算机",
+        "电气维修",
+        "电子学",
+        "图书馆",
+        "侦查",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "任意两项其他技能"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "牛仔",
+      "creditRating": {
+        "min": 9,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "闪避",
+        "格斗或射击",
+        "急救或博物学",
+        "跳跃",
+        "骑乘",
+        "生存（任一）",
+        "投掷",
+        "追踪"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "工匠",
+      "creditRating": {
+        "min": 10,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "技艺（任二）",
+        "机械维修",
+        "博物学",
+        "侦查",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "罪犯-刺客",
+      "creditRating": {
+        "min": 30,
+        "max": 60
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "乔装",
+        "电气维修",
+        "格斗",
+        "射击",
+        "锁匠",
+        "机械维修",
+        "潜行",
+        "心理学"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "罪犯-银行劫匪",
+      "creditRating": {
+        "min": 5,
+        "max": 75
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "汽车驾驶",
+        "电气维修或机械维修",
+        "格斗",
+        "射击",
+        "恐吓",
+        "锁匠",
+        "操作重型机械",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "罪犯-打手、暴徒",
+      "creditRating": {
+        "min": 5,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量×2",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "汽车驾驶",
+        "格斗",
+        "射击",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "潜行",
+        "侦查"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "罪犯-窃贼",
+      "creditRating": {
+        "min": 5,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "估价",
+        "攀爬",
+        "电气维修或机械维修",
+        "聆听",
+        "锁匠",
+        "妙手",
+        "潜行",
+        "侦查"
+      ]
+    },
+    {
+      "id": 31,
+      "name": "罪犯-欺诈师",
+      "creditRating": {
+        "min": 10,
+        "max": 65
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "估价",
+        "技艺（表演）",
+        "法律或外语",
+        "聆听",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "妙手"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "罪犯-独行罪犯",
+      "creditRating": {
+        "min": 5,
+        "max": 65
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（表演）或乔装",
+        "估价",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗或射击",
+        "锁匠或机械维修",
+        "潜行",
+        "心理学",
+        "侦查"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "罪犯-女飞贼（古典）",
+      "creditRating": {
+        "min": 10,
+        "max": 80
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（任意）",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗（斗殴）或射击（手枪）",
+        "汽车驾驶",
+        "聆听",
+        "潜行",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "罪犯-赃物贩子",
+      "creditRating": {
+        "min": 20,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "会计",
+        "估价",
+        "技艺（伪造）",
+        "历史",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "图书馆",
+        "侦查",
+        "任意一项其他技能"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "罪犯-赝造者",
+      "creditRating": {
+        "min": 20,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "估价",
+        "技艺（伪造）",
+        "历史",
+        "图书馆",
+        "侦查",
+        "妙手",
+        "任意一项其他个人或时代特长（如计算机）"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "罪犯-走私者",
+      "creditRating": {
+        "min": 20,
+        "max": 60
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "射击",
+        "聆听",
+        "导航",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "汽车驾驶或驾驶（飞行器或船）",
+        "心理学",
+        "妙手",
+        "侦查"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "罪犯-混混",
+      "creditRating": {
+        "min": 3,
+        "max": 10
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗",
+        "射击",
+        "跳跃",
+        "妙手",
+        "潜行",
+        "投掷"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "教团首领",
+      "creditRating": {
+        "min": 30,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "神秘学",
+        "心理学",
+        "侦查",
+        "任意其他两项其他个人特长"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "除魅师（现代）",
+      "creditRating": {
+        "min": 20,
+        "max": 50
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "汽车驾驶",
+        "格斗（斗殴）或射击",
+        "历史",
+        "神秘学",
+        "心理学",
+        "潜行。※经KP允许 可用催眠替换其中一项"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "设计师",
+      "creditRating": {
+        "min": 20,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "技艺（摄影）",
+        "技艺（任一）",
+        "计算机或图书馆",
+        "机械维修",
+        "心理学",
+        "侦查",
+        "任意一项其他个人特长"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "业余艺术爱好者（原作向）",
+      "creditRating": {
+        "min": 50,
+        "max": 99
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（任一）",
+        "射击",
+        "外语",
+        "骑乘",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "任意三项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "潜水员",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "潜水",
+        "急救",
+        "机械维修",
+        "驾驶（船）",
+        "科学（生物）",
+        "侦查",
+        "游泳",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "医生（原作向）",
+      "creditRating": {
+        "min": 30,
+        "max": 80
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "急救",
+        "医学",
+        "外语（拉丁文）",
+        "心理学",
+        "科学（生物学，制药）",
+        "任两种其他学术或个人特长"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "流浪者",
+      "creditRating": {
+        "min": 0,
+        "max": 5
+      },
+      "attrFormula": "教育×2＋外貌或敏捷或力量×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "跳跃",
+        "聆听",
+        "导航",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "潜行",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "司机-私人司机",
+      "creditRating": {
+        "min": 10,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "汽车驾驶",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "聆听",
+        "机械维修",
+        "导航",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "司机-司机",
+      "creditRating": {
+        "min": 9,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "汽车驾驶",
+        "聆听",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "机械维修",
+        "导航",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "司机-出租车司机",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "汽车驾驶",
+        "电气维修",
+        "话术",
+        "机械维修",
+        "导航",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "编辑",
+      "creditRating": {
+        "min": 10,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "历史",
+        "母语",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "政府官员",
+      "creditRating": {
+        "min": 50,
+        "max": 90
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "魅惑",
+        "历史",
+        "恐吓",
+        "话术",
+        "聆听",
+        "母语",
+        "说服",
+        "心理学"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "工程师",
+      "creditRating": {
+        "min": 30,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（技术制图）",
+        "电气维修",
+        "图书馆",
+        "机械维修",
+        "操作重型机械",
+        "科学（工程学，物理）",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 51,
+      "name": "艺人",
+      "creditRating": {
+        "min": 9,
+        "max": 70
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（表演类，如表演、演唱、喜剧等）",
+        "乔装",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "聆听",
+        "心理学",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "探险家（古典）",
+      "creditRating": {
+        "min": 55,
+        "max": 80
+      },
+      "attrFormula": "教育×2＋外貌或敏捷或力量×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬或游泳",
+        "射击",
+        "历史",
+        "跳跃",
+        "博物学",
+        "导航",
+        "外语",
+        "生存"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "农民",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（耕作）",
+        "汽车驾驶（或运货马车）",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "机械维修",
+        "博物学",
+        "操作重型机械",
+        "追踪",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "司法人员",
+      "creditRating": {
+        "min": 20,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "汽车驾驶",
+        "格斗（斗殴）",
+        "射击",
+        "法律",
+        "说服",
+        "潜行",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "消防员",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "闪避",
+        "汽车驾驶",
+        "急救",
+        "跳跃",
+        "机械维修",
+        "操作重型机械",
+        "投掷"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "驻外记者",
+      "creditRating": {
+        "min": 10,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "历史",
+        "外语",
+        "母语",
+        "聆听",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 57,
+      "name": "法医",
+      "creditRating": {
+        "min": 40,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "外语（拉丁文）",
+        "图书馆",
+        "医学",
+        "说服",
+        "科学（生物学，鉴证，制药）",
+        "侦查"
+      ]
+    },
+    {
+      "id": 58,
+      "name": "赌徒",
+      "creditRating": {
+        "min": 8,
+        "max": 50
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "技艺（表演）",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "聆听",
+        "心理学",
+        "妙手",
+        "侦查"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "黑帮-黑帮老大",
+      "creditRating": {
+        "min": 60,
+        "max": 95
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "格斗",
+        "射击",
+        "法律",
+        "聆听",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "侦查"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "黑帮-马仔",
+      "creditRating": {
+        "min": 9,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "汽车驾驶",
+        "格斗",
+        "射击",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 61,
+      "name": "绅士、淑女",
+      "creditRating": {
+        "min": 40,
+        "max": 90
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（任一）",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "射击（步枪/霰弹枪）",
+        "历史",
+        "外语（任一）",
+        "导航",
+        "骑乘"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "游民",
+      "creditRating": {
+        "min": 0,
+        "max": 5
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（任一）",
+        "攀爬",
+        "跳跃",
+        "聆听",
+        "锁匠或妙手",
+        "导航",
+        "潜行",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "勤杂护工",
+      "creditRating": {
+        "min": 6,
+        "max": 15
+      },
+      "attrFormula": "教育×2＋力量×2",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "电气维修",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗（斗殴）",
+        "急救",
+        "聆听",
+        "机械维修",
+        "心理学",
+        "潜行"
+      ]
+    },
+    {
+      "id": 64,
+      "name": "记者(原作向)-调查记者",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（艺术或摄影）",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "历史",
+        "图书馆",
+        "母语",
+        "心理学",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 65,
+      "name": "记者(原作向)-通讯记者",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（表演）",
+        "历史",
+        "聆听",
+        "母语",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "潜行",
+        "侦查"
+      ]
+    },
+    {
+      "id": 66,
+      "name": "法官",
+      "creditRating": {
+        "min": 50,
+        "max": 80
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "历史",
+        "恐吓",
+        "法律",
+        "图书馆",
+        "聆听",
+        "母语",
+        "说服",
+        "心理学"
+      ]
+    },
+    {
+      "id": 67,
+      "name": "实验室助理",
+      "creditRating": {
+        "min": 10,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "计算机或图书馆",
+        "电气维修",
+        "外语",
+        "科学（化学和任意两项）",
+        "侦查",
+        "任意一项其他个人特长"
+      ]
+    },
+    {
+      "id": 68,
+      "name": "工人-非熟练工人",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "汽车驾驶",
+        "电气维修",
+        "格斗",
+        "急救",
+        "机械维修",
+        "操作重型机械",
+        "投掷",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 69,
+      "name": "工人-伐木工",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "闪避",
+        "格斗（链锯）",
+        "急救",
+        "跳跃",
+        "机械维修",
+        "博物学或科学（生物学或植物学）",
+        "投掷"
+      ]
+    },
+    {
+      "id": 70,
+      "name": "工人-矿工",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "科学（地质）",
+        "跳跃",
+        "机械维修",
+        "操作重型机械",
+        "潜行",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 71,
+      "name": "律师",
+      "creditRating": {
+        "min": 30,
+        "max": 80
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "法律",
+        "图书馆",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "两项其他技能"
+      ]
+    },
+    {
+      "id": 72,
+      "name": "图书馆管理员（原作向）",
+      "creditRating": {
+        "min": 9,
+        "max": 35
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "图书馆",
+        "外语",
+        "母语",
+        "任意四项其他个人特长或专业书籍主题"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "技师",
+      "creditRating": {
+        "min": 9,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（木工、焊接、管道工等）",
+        "攀爬",
+        "汽车驾驶",
+        "电气维修",
+        "机械维修",
+        "操作重型机械",
+        "任意两项其他个人或时代或技术特长"
+      ]
+    },
+    {
+      "id": 74,
+      "name": "军官",
+      "creditRating": {
+        "min": 20,
+        "max": 70
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "射击",
+        "导航",
+        "急救",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 75,
+      "name": "传教士",
+      "creditRating": {
+        "min": 0,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（任一）",
+        "急救",
+        "机械维修",
+        "医学",
+        "博物学",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 76,
+      "name": "登山家",
+      "creditRating": {
+        "min": 30,
+        "max": 60
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "急救",
+        "跳跃",
+        "聆听",
+        "导航",
+        "外语",
+        "生存（阿尔卑斯或类似）",
+        "追踪"
+      ]
+    },
+    {
+      "id": 77,
+      "name": "博物馆管理员",
+      "creditRating": {
+        "min": 10,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "估价",
+        "考古",
+        "历史",
+        "图书馆",
+        "神秘学",
+        "外语",
+        "侦查"
+      ]
+    },
+    {
+      "id": 78,
+      "name": "音乐家",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋敏捷或意志×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（乐器）",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "聆听",
+        "心理学",
+        "四项其他技能"
+      ]
+    },
+    {
+      "id": 79,
+      "name": "护士",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "急救",
+        "聆听",
+        "医学",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "科学（生物学，化学）",
+        "侦查"
+      ]
+    },
+    {
+      "id": 80,
+      "name": "神秘学家",
+      "creditRating": {
+        "min": 9,
+        "max": 65
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "人类学",
+        "历史",
+        "图书馆",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "神秘学",
+        "外语",
+        "科学（天文）",
+        "任意一项其他个人或时代特长 ※经KP允许 可以包含克苏鲁神话"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "旅行家",
+      "creditRating": {
+        "min": 5,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "射击",
+        "急救",
+        "聆听",
+        "博物学",
+        "导航",
+        "侦查",
+        "生存（任一）",
+        "追踪"
+      ]
+    },
+    {
+      "id": 82,
+      "name": "超心理学家",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "人类学",
+        "技艺（摄影）",
+        "历史",
+        "图书馆",
+        "神秘学",
+        "外语",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 83,
+      "name": "药剂师",
+      "creditRating": {
+        "min": 35,
+        "max": 75
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "急救",
+        "外语（拉丁文）",
+        "图书馆",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "科学（制药，化学）"
+      ]
+    },
+    {
+      "id": 84,
+      "name": "摄影师-摄影师",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（摄影）",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "科学（化学）",
+        "潜行",
+        "侦查",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 85,
+      "name": "摄影师-摄影记者",
+      "creditRating": {
+        "min": 10,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "技艺（摄影）",
+        "攀爬",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "外语",
+        "心理学",
+        "科学（化学）",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 86,
+      "name": "飞行员-飞行员",
+      "creditRating": {
+        "min": 20,
+        "max": 70
+      },
+      "attrFormula": "教育×2＋敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "电气维修",
+        "机械维修",
+        "导航",
+        "操作重型机械",
+        "驾驶（飞行器）",
+        "科学（天文）",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 87,
+      "name": "飞行员-特技飞行员（古典）",
+      "creditRating": {
+        "min": 30,
+        "max": 60
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "电气维修",
+        "聆听",
+        "机械维修",
+        "导航",
+        "驾驶（飞行器）",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 88,
+      "name": "警方(原作向)-警探",
+      "creditRating": {
+        "min": 20,
+        "max": 50
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（表演）或乔装",
+        "射击",
+        "法律",
+        "聆听",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "侦查",
+        "一项其他技能"
+      ]
+    },
+    {
+      "id": 89,
+      "name": "警方(原作向)-巡警",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "格斗（斗殴）",
+        "射击",
+        "急救",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "法律",
+        "心理学",
+        "侦查和下面的一种个人特长：汽车驾驶或骑乘"
+      ]
+    },
+    {
+      "id": 90,
+      "name": "私家侦探",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（摄影）",
+        "乔装",
+        "法律",
+        "图书馆",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "侦查",
+        "一项其他个人或时代特长（如计算机、锁匠、格斗、射击）"
+      ]
+    },
+    {
+      "id": 91,
+      "name": "教授（原作向）",
+      "creditRating": {
+        "min": 20,
+        "max": 70
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "图书馆",
+        "外语",
+        "母语",
+        "心理学",
+        "任意四项其他学术",
+        "时代或个人特长"
+      ]
+    },
+    {
+      "id": 92,
+      "name": "淘金客",
+      "creditRating": {
+        "min": 0,
+        "max": 10
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "急救",
+        "历史",
+        "机械维修",
+        "导航",
+        "科学（地质）",
+        "侦查",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 93,
+      "name": "性工作者",
+      "creditRating": {
+        "min": 5,
+        "max": 50
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "技艺（任一）",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "闪避",
+        "心理学",
+        "妙手",
+        "潜行",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 94,
+      "name": "精神病学家",
+      "creditRating": {
+        "min": 30,
+        "max": 80
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "外语",
+        "聆听",
+        "医学",
+        "说服",
+        "精神分析",
+        "心理学",
+        "科学（生物学，化学）"
+      ]
+    },
+    {
+      "id": 95,
+      "name": "心理学家、精神分析学家",
+      "creditRating": {
+        "min": 10,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "图书馆",
+        "聆听",
+        "说服",
+        "精神分析",
+        "心理学",
+        "任意两项其他学术",
+        "个人或时代特长"
+      ]
+    },
+    {
+      "id": 96,
+      "name": "研究员",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "历史",
+        "图书馆",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "外语",
+        "侦查",
+        "任意三项其他学术领域"
+      ]
+    },
+    {
+      "id": 97,
+      "name": "海员-军舰海员",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "电工或机械维修",
+        "格斗",
+        "射击",
+        "急救",
+        "导航",
+        "驾驶（船）",
+        "生存（海上）",
+        "游泳"
+      ]
+    },
+    {
+      "id": 98,
+      "name": "海员-民船海员",
+      "creditRating": {
+        "min": 20,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "急救",
+        "机械维修",
+        "博物学",
+        "导航",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "驾驶（船）",
+        "侦查",
+        "游泳"
+      ]
+    },
+    {
+      "id": 99,
+      "name": "推销员",
+      "creditRating": {
+        "min": 9,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋外貌×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "会计",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "汽车驾驶",
+        "聆听",
+        "心理学",
+        "潜行或妙手",
+        "一项其他技能"
+      ]
+    },
+    {
+      "id": 100,
+      "name": "科学家",
+      "creditRating": {
+        "min": 9,
+        "max": 50
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "任意三项科学专业领域",
+        "计算机或图书馆",
+        "外语",
+        "母语",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "侦查"
+      ]
+    },
+    {
+      "id": 101,
+      "name": "秘书",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "技艺（打字或速记）",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "母语",
+        "图书馆或计算机",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 102,
+      "name": "店老板",
+      "creditRating": {
+        "min": 20,
+        "max": 40
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "电气维修",
+        "聆听",
+        "机械维修",
+        "心理学",
+        "侦查"
+      ]
+    },
+    {
+      "id": 103,
+      "name": "士兵、海军陆战队士兵",
+      "creditRating": {
+        "min": 9,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬或游泳",
+        "闪避",
+        "格斗",
+        "射击",
+        "潜行",
+        "生存",
+        "下面任选两项：急救",
+        "机械维修",
+        "外语"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "间谍",
+      "creditRating": {
+        "min": 20,
+        "max": 60
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "技艺（表演）或乔装",
+        "射击",
+        "聆听",
+        "外语",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "妙手",
+        "潜行"
+      ]
+    },
+    {
+      "id": 105,
+      "name": "学生、实习生",
+      "creditRating": {
+        "min": 5,
+        "max": 10
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "语言（母语或外语）",
+        "图书馆",
+        "聆听",
+        "三个学习的专业",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "替身演员",
+      "creditRating": {
+        "min": 10,
+        "max": 50
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "闪避",
+        "电气维修或机械维修",
+        "格斗",
+        "急救",
+        "跳跃",
+        "游泳",
+        "下面任选一项：潜水",
+        "汽车驾驶",
+        "驾驶（任一）",
+        "骑乘"
+      ]
+    },
+    {
+      "id": 107,
+      "name": "部落成员",
+      "creditRating": {
+        "min": 0,
+        "max": 15
+      },
+      "attrFormula": "教育×2＋力量或敏捷×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "攀爬",
+        "格斗或投掷",
+        "聆听",
+        "博物学",
+        "神秘学",
+        "侦查",
+        "游泳",
+        "生存（任一）"
+      ]
+    },
+    {
+      "id": 108,
+      "name": "殡葬师",
+      "creditRating": {
+        "min": 20,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "汽车驾驶",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "历史",
+        "神秘学",
+        "心理学",
+        "科学（生物学，化学）"
+      ]
+    },
+    {
+      "id": 109,
+      "name": "工会活动家",
+      "creditRating": {
+        "min": 5,
+        "max": 50
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "格斗（斗殴）",
+        "法律",
+        "聆听",
+        "操作重型机械",
+        "心理学"
+      ]
+    },
+    {
+      "id": 110,
+      "name": "服务生",
+      "creditRating": {
+        "min": 9,
+        "max": 20
+      },
+      "attrFormula": "教育×2＋敏捷或外貌×2",
+      "skillPoints": 260,
+      "occupationSkills": [
+        "会计",
+        "技艺（任一）",
+        "闪避",
+        "聆听",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意一项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 111,
+      "name": "白领工人-职员、主管",
+      "creditRating": {
+        "min": 9,
+        "max": 20
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "语言",
+        "法律",
+        "图书馆或计算机",
+        "聆听",
+        "一项社交技能（魅惑、话术、恐吓、说服）",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 112,
+      "name": "白领工人-中高层管理人员",
+      "creditRating": {
+        "min": 20,
+        "max": 80
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "会计",
+        "外语",
+        "法律",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "任意两项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 113,
+      "name": "狂热者",
+      "creditRating": {
+        "min": 0,
+        "max": 30
+      },
+      "attrFormula": "教育×2＋外貌或意志×2",
+      "skillPoints": 220,
+      "occupationSkills": [
+        "历史",
+        "两项社交技能（魅惑、话术、恐吓、说服）",
+        "心理学",
+        "潜行",
+        "任意三项其他个人或时代特长"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "饲养员",
+      "creditRating": {
+        "min": 9,
+        "max": 40
+      },
+      "attrFormula": "教育×4",
+      "skillPoints": 200,
+      "occupationSkills": [
+        "驯兽",
+        "会计",
+        "闪避",
+        "急救",
+        "博物学",
+        "医学",
+        "科学（制药，动物学）"
+      ]
+    }
+  ]
+}
