@@ -1,4 +1,5 @@
 import { SCRIPT } from '../engine/content'
+import { KNOWN_ORPHANS, KNOWN_UNREACHABLE } from '../engine/gaps'
 import { storageAvailable } from '../engine/save'
 import type { Settings } from '../engine/save'
 
@@ -79,8 +80,9 @@ export default function Menu({
         </fieldset>
 
         <p className="muted small footnote">
-          规则依据 CoC 7e。原作《向火独行》包含 12 个在原书中没有入口的条目
-          （docx 转纯文本时丢失了跳转），这些内容已如实保留但无法正常抵达。
+          规则依据 CoC 7e。原作《向火独行》有 {KNOWN_ORPHANS.length} 个条目在原书中没有入口
+          （docx 转纯文本时丢失了跳转），另有一共 {KNOWN_UNREACHABLE.length} 个条目无法抵达。
+          这些内容已如实保留，不猜测作者的跳转意图。
         </p>
       </div>
     </div>
